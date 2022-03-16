@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+
+
+
+</head>
+<body style="background-color: rgba(0, 0, 0, 0.05)">
+
+
+  <!-- Header Section Start -->
+  <div class="col-md-12 text-center">
+    <br>
+    <img src="../Emblem_of_Nepal_2020.svg" style="width: 60px;"> 
+    <h2>{{orgname}}</h2>
+  </div>      
+  <!-- Header Section End -->
+  <br>
+  <!-- Section Start -->
+  <div class="container-fluid mb-2">
+    <div class="row" style=" justify-content: center;">
+      <div class="col-md-2">
+       <div class="col-6 col-lg-2">
+        <div class="card overflow-hidden" style="height:8p0x; width: 250px;">
+          <div class="card-body p-0 d-flex align-items-center">
+            <div class="bg-primary text-white p-4 me-3" style="width: 65px">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
+                <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
+                <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z"/>
+              </svg>
+            </div>
+            <div style="margin-left: 10px;">
+              <div class="fs-6 fw-semibold text-primary">$1.999,50</div>
+              <div class="text-medium-emphasis text-uppercase fw-semibold small">Widget title</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+     <div class="col-6 col-lg-3">
+      <div class="card overflow-hidden" style="height:8p0x; width: 250px;">
+        <div class="card-body p-0 d-flex align-items-center">
+          <div class="bg-primary text-white p-4 me-3" style="width: 65px">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
+              <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
+              <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z"/>
+            </svg>
+          </div>
+          <div style="margin-left: 10px;">
+            <div class="fs-6 fw-semibold text-primary">$1.999,50</div>
+            <div class="text-medium-emphasis text-uppercase fw-semibold small">Widget title</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-2">
+   <div class="col-6 col-lg-3">
+    <div class="card overflow-hidden" style="height:8p0x; width: 250px;">
+      <div class="card-body p-0 d-flex align-items-center">
+        <div class="bg-primary text-white p-4 me-3" style="width: 65px">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
+            <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
+            <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z"/>
+          </svg>
+        </div>
+        <div style="margin-left: 10px;">
+          <div class="fs-6 fw-semibold text-primary">$1.999,50</div>
+          <div class="text-medium-emphasis text-uppercase fw-semibold small">Widget title</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-2">
+  <div class="col-6 col-lg-3">
+    <div class="card overflow-hidden" style="height:8p0x; width: 250px;">
+      <div class="card-body p-0 d-flex align-items-center">
+        <div class="bg-primary text-white p-4 me-3" style="width: 65px">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
+            <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
+            <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z"/>
+          </svg>
+        </div>
+        <div style="margin-left: 10px;">
+          <div class="fs-6 fw-semibold text-primary">$1.999,50</div>
+          <div class="text-medium-emphasis text-uppercase fw-semibold small">Widget title</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-2">
+ <div class="col-6 col-lg-3">
+  <div class="card overflow-hidden" style="height:8p0x; width: 250px;">
+    <div class="card-body p-0 d-flex align-items-center">
+      <div class="bg-primary text-white p-4 me-3" style="width: 65px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
+          <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
+          <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z"/>
+        </svg>
+      </div>
+      <div style="margin-left: 10px;">
+        <div class="fs-6 fw-semibold text-primary">$1.999,50</div>
+        <div class="text-medium-emphasis text-uppercase fw-semibold small">Widget title</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+</div>
+<!-- Section End -->
+
+
+
+<!-- Scroll Part Start -->
+<div class="">
+  <div class="row" style="background: #2460b9;">
+    <div class="col-md-1" style="background-color: #ca010e;">
+     <h4 style="color:whitesmoke;padding-top: 15px; padding-left: 15px;" class="text-center">Update</h4>
+   </div>
+   <div class="col-md-11" style="height:60px;">
+    <div class="marquee" style="line-height: -15px;">
+      <p style="font-size: xx-large;">स्वास्थ्य ड्यासबोर्ड मुख्य रूपले ग्राफिकल चार्टहरू, नक्साहरू र तथ्याङ्कहरूको सहायताले स्वास्थ्य संकेतकहरूको प्रगतिको निरीक्षण गर्न प्रयोग हुन्छ । सान्दर्भिक चार्टहरू, नक्साहरू र तथ्याङ्कहरू पनि ड्यासबोर्डबाट डाउनलोड गर्न सकिन्छ ।</p>
+    </div>
+  </div>
+</div>
+
+</div>
+<!-- Scroll Part End -->
+
+
+<!-- Main Body Part Start-->
+
+<div class="row">
+  <div class="col-md-12 text-center">
+    <img id="changeImage" 
+    src="https://images.unsplash.com/photo-1646282014691-620f9af448a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+    style="max-height:625px;
+    max-width: 100%;" class="d-block w-100" alt="...">
+  
+    <!-- Couldn't figure out the exact calculations but max-height: calc(100vh - 35%) will give tentative height that we need, but damages other magiins of screen-->
+
+    <!-- Also, without this part ->(class="d-block w-100" alt="...") the image will not fully cover the screen -->
+
+  </div>
+
+</div>
+
+<!-- Main Body Part End -->
+
+</body>
+</html>
+
+
+
+
+<style type="text/css">  
+.marquee {
+    width: 100%;
+  line-height: 50px;
+  background-color: #2460b9;
+  color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.marquee p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 60s linear infinite;
+}
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+</style>
+
+
+<script type="text/javascript">
+
+  function changeImageHere(){
+    var element = document.getElementById('changeImage');
+
+    if (element.src == "https://images.unsplash.com/photo-1646291417814-5241b938669a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"){
+
+        element.src = "https://images.unsplash.com/photo-1646282014691-620f9af448a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
+    }
+    else{
+      element.src = "https://images.unsplash.com/photo-1646291417814-5241b938669a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
+    }
+    
+  }
+
+// Image Change in 15 seconds
+  setInterval(changeImageHere, 5000);
+
+
+
+</script>
+
+
+
+<style type="text/css">
+  
+  .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+  padding-left: 0;
+}
+
+</style>
