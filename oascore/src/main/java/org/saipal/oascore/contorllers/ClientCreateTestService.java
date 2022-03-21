@@ -70,7 +70,7 @@ public class ClientCreateTestService extends AutoService{
 	}
 
 	public ResponseEntity<Map<String, Object>> getIndicators(String id) {
-		String sql = "select uid,data_elements from data_elements where pid=?";
+		String sql = "select uid,data_elements,data_elements_np from data_elements where pid=?";
 		List<Tuple> admlvl = db.getResultList(sql, Arrays.asList(id));
 
 		List<Map<String, Object>> list = new ArrayList<>();
@@ -79,6 +79,7 @@ public class ClientCreateTestService extends AutoService{
 				Map<String, Object> mapadmlvl = new HashMap<>();
 				mapadmlvl.put("id", t.get("uid"));
 				mapadmlvl.put("name", t.get("data_elements"));
+				mapadmlvl.put("namenp", t.get("data_elements_np"));
 				list.add(mapadmlvl);
 			}
 			return Messenger.getMessenger().setData(list).success();
@@ -94,7 +95,7 @@ public class ClientCreateTestService extends AutoService{
 		String ouid="YqQbkwADI71";
 		String pe=preparePeriods(fy);
 		String pef = pe.replaceFirst(".$","");
-		System.out.println(pef);
+//		System.out.println(pef);
 		  String link = "/api/analytics.json?dimension=dx:"+indId+"&dimension=pe:"+pef+"&filter=ou:"+ouid;
 //		  String link = "/api/29/analytics?dimension=dx:"+indId+",ou:"+ouid+"&filter=pe:"+pe;
 		  System.out.println(getResponse(link));
