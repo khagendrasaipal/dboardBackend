@@ -174,4 +174,25 @@ public class ClientCreateTestService extends AutoService{
 		return fdata;
 
 	}
+
+	public ResponseEntity<Map<String, Object>> getComposite() {
+		String sql = "select weight,value,fy,concat(fy,\\\"/\\\",fy+1) as fys,composite_indicator.name as indicator from composite_indicators_value join composite_indicator on composite_indicator.id=composite_indicators_value.indicator where orgid=? group by indicator,fy order by fy";
+		List<Tuple> admlvl = db.getResultList(sql, Arrays.asList(session("orgid")));
+
+		List<Map<String, Object>> list = new ArrayList<>();
+		if (!admlvl.isEmpty()) {
+			for (Tuple t : admlvl) {
+				Map<String, Object> mapadmlvl = new HashMap<>();
+				mapadmlvl.put("weight", t.get("weight"));
+				mapadmlvl.put("value", t.get("value"));
+				mapadmlvl.put("fy", t.get("fy"));
+				mapadmlvl.put("indicator", t.get("indicator"));
+				list.add(mapadmlvl);
+			}
+			return Messenger.getMessenger().setData(list).success();
+
+		} else {
+			return Messenger.getMessenger().error();
+		}
+	}
 }
