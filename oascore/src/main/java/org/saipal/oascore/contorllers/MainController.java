@@ -180,6 +180,12 @@ public class MainController {
 
 	}
 	
+	@GetMapping("/dboard/getComposite")
+	public ResponseEntity<Map<String, Object>> getComposite(HttpServletRequest request) {
+		return createClient.getComposite();
+
+	}
+	
 	
 //	@ResponseBody
 //	@GetMapping("/test/authorize")
