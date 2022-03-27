@@ -185,7 +185,7 @@ public class ClientCreateTestService extends AutoService{
 				Map<String, Object> mapadmlvl = new HashMap<>();
 				mapadmlvl.put("weight", t.get("weight"));
 				mapadmlvl.put("value", t.get("value"));
-				mapadmlvl.put("fy", t.get("fy"));
+				mapadmlvl.put("fys", t.get("fys"));
 				mapadmlvl.put("indicator", t.get("indicator"));
 				list.add(mapadmlvl);
 			}
@@ -194,5 +194,46 @@ public class ClientCreateTestService extends AutoService{
 		} else {
 			return Messenger.getMessenger().error();
 		}
+	}
+
+	public List<Tuple> getChartConfig(HttpServletRequest request) {
+		String sql = "select indicator,concat(fy,\\\"/\\\",fy+1) as fys,chart_type,data_elements.data_elements as inameen,data_elements.data_elements_np as inamenp from public_dashboard_setup join data_elements on data_elements.uid=public_dashboard_setup.indicator where orgid="+request("orgid");
+		List<String> argList = new ArrayList<String>();
+		List<Tuple> tList = db.getResultList(sql, argList);
+		return tList;
+	}
+
+	public List<Map<String, Object>> getWeatherInfo(HttpServletRequest request) throws JSONException {
+		
+		String apikey="b3677a60280c0c3589a6bf27bcab3aeb";
+		String sql="select value from indicators_value where orgid=? and indicator=?";
+		Map<String, Object> lat = db.getSingleResultMap(sql, Arrays.asList(request("orgid"),8));
+		
+		String sql1="select value from indicators_value where orgid=? and indicator=?";
+		Map<String, Object> longs = db.getSingleResultMap(sql1, Arrays.asList(request("orgid"),9));		
+		String lats=lat.get("value").toString();
+		String lon=longs.get("value").toString();
+	
+		
+		String url="https://api.openweathermap.org/data/2.5/weather?lat="+lats+"&lon="+lon+"&appid="+apikey+"&units=metric";
+//		String url="https://api.openweathermap.org/data/2.5/weather?lat=27.89272170659029&lon=86.83190351004616&appid="+apikey+"&units=metric";
+		HttpRequest requests = new HttpRequest();
+		JSONObject responses = requests.setHeader("Accept", "application/json").get(url);
+		JSONObject resp = responses.getJSONObject("data");
+		String temp=resp.getJSONObject("main").get("temp").toString();
+		JSONArray main=resp.getJSONArray("weather");
+		JSONObject resps=main.getJSONObject(0);
+		String type=resps.get("main").toString();
+		String desc=resps.get("description").toString();
+		String icon=resps.get("icon").toString();
+		List<Map<String, Object>> list = new ArrayList<>();
+		Map<String, Object> mapadmlvl = new HashMap<>();
+		mapadmlvl.put("temp", temp);
+		mapadmlvl.put("type", type);
+		mapadmlvl.put("desc", desc);
+		mapadmlvl.put("icon", icon);
+		list.add(mapadmlvl);
+		// TODO Auto-generated method stub
+		return list;
 	}
 }

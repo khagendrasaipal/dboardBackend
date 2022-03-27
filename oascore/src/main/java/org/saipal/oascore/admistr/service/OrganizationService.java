@@ -71,6 +71,7 @@ public class OrganizationService extends AutoService {
 		DbResponse rowEffect = db.execute(sql, Arrays.asList(model.code, model.name, model.adm_level, model.adm_id,
 				model.parent));
 		if (rowEffect.getErrorNumber() == 0) {
+			
 			return Messenger.getMessenger().success();
 
 		} else {

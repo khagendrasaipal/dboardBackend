@@ -85,6 +85,7 @@ public class CompositeValueService extends AutoService {
 		String sql = "select id,indicator,fy,value,domain_id,weight from "
 				+ table + " where id=?";
 		Map<String, Object> data = db.getSingleResultMap(sql, Arrays.asList(id));
+		System.out.println(data.get("indicator"));
 		return ResponseEntity.ok(data);
 	}
 

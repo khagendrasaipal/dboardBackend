@@ -145,19 +145,29 @@ public class MainController {
 	}
 	
 	@GetMapping("/test/dashboard")
-	public String dash(Model model,HttpServletRequest request) {
+	public String dash(Model model,HttpServletRequest request) throws JSONException {
 //		System.out.println(request("orgid"));
 		List<Tuple> org = createClient.getOrgs(request);
+		List<Tuple> chart=createClient.getChartConfig(request);
+		List<Map<String, Object>> weather=createClient.getWeatherInfo(request);
+		System.out.println(weather.get(0).get("temp"));
 		String orgname=org.get(0).get("name").toString();
 		model.addAttribute("orgname", orgname);
+		model.addAttribute("chart",chart);
+		model.addAttribute("temp",weather.get(0).get("temp"));
+		model.addAttribute("type",weather.get(0).get("type"));
+		model.addAttribute("desc",weather.get(0).get("desc"));
+		model.addAttribute("icon",weather.get(0).get("icon"));
 		return "test/dashboard";
 	}
 	
 	@GetMapping("/test/web")
 	public String webs(Model model,HttpServletRequest request) {
 		List<Tuple> org = createClient.getOrgs(request);
+		List<Tuple> chart=createClient.getChartConfig(request);
 		String orgname=org.get(0).get("name").toString();
 		model.addAttribute("orgname", orgname);
+		model.addAttribute("chart",chart);
 		return "test/web";
 	}
 
