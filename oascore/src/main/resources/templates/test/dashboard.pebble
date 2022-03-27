@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard</title>
+  <title>Charts And Stuffs</title>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,7 @@
   <div class="col-md-12 text-center">
     <br>
     <img src="../Emblem_of_Nepal_2020.svg" style="width: 60px;"> 
-    <h2>{{orgname}}</h2>
+    <h2>Some Municipality</h2>
   </div>      
   <!-- Header Section End -->
   <br>
@@ -143,9 +143,9 @@
     <div class="col-md-1" style="background-color: #ca010e;">
      <h4 style="color:whitesmoke;padding-top: 15px; padding-left: 15px;" class="text-center">Update</h4>
    </div>
-   <div class="col-md-11" style="height:60px;">
+   <div class="col-md-11">
     <div class="marquee" style="line-height: -15px;">
-      <p style="font-size: xx-large;">स्वास्थ्य ड्यासबोर्ड मुख्य रूपले ग्राफिकल चार्टहरू, नक्साहरू र तथ्याङ्कहरूको सहायताले स्वास्थ्य संकेतकहरूको प्रगतिको निरीक्षण गर्न प्रयोग हुन्छ । सान्दर्भिक चार्टहरू, नक्साहरू र तथ्याङ्कहरू पनि ड्यासबोर्डबाट डाउनलोड गर्न सकिन्छ ।</p>
+      <p style="font-size: xx-large;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis venenatis, massa a pellentesque aliquam, arcu nunc condimentum ligula, eleifend tempus ante arcu vitae libero. Aenean euismod, magna non egestas ullamcorper, ex urna volutpat ipsum, a tempor augue arcu at ipsum. Praesent aliquam libero tortor, nec pulvinar elit bibendum sed. Mauris luctus tincidunt vehicula. Fusce dictum ac ipsum vel tempus. Aenean malesuada sapien et tortor sagittis, porttitor blandit odio eleifend. Curabitur ut hendrerit lectus. Cras rhoncus rhoncus mi, a lobortis quam sollicitudin ac. Nam sit amet elit et orci semper rhoncus sed a eros. Nulla cursus a neque et malesuada. Proin tincidunt pellentesque est, at convallis felis viverra vitae. Maecenas sollicitudin aliquet massa at vehicula. Nam sed ante massa. Nullam ultricies cursus mauris id blandit. In imperdiet pretium enim. Cras accumsan quis nunc in facilisis. </p>
     </div>
   </div>
 </div>
@@ -157,13 +157,24 @@
 <!-- Main Body Part Start-->
 
 <div class="row">
+
   <div class="col-md-12 text-center">
   <!--  {% for p in chart %}{{ p.get("inamenp")}}{% endfor %} -->
     <img id="changeImage" 
+
+  <div class="col-md-12">
+   <!--  <img id="changeImage" 
+
     src="https://images.unsplash.com/photo-1646282014691-620f9af448a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
     style="max-height:625px;
-    max-width: 100%;" class="d-block w-100" alt="...">
+    max-width: 100%;" class="d-block w-100" alt="..."> -->
+
+    <canvas id="meowChart" class="d-block w-100" style="padding:20px; max-height:630px"></canvas>
   
+      <canvas id="ourChart" class="d-block w-100 hide" style="padding:20px; max-height:630px; width: 700px;"></canvas>
+
+        <canvas id="myChart" class="d-block w-100 hide" style="padding:20px; max-height:630px; width: 700px"></canvas>
+
     <!-- Couldn't figure out the exact calculations but max-height: calc(100vh - 35%) will give tentative height that we need, but damages other magiins of screen-->
 
     <!-- Also, without this part ->(class="d-block w-100" alt="...") the image will not fully cover the screen -->
@@ -193,33 +204,56 @@
 .marquee p {
     display: inline-block;
     padding-left: 100%;
-    animation: marquee 60s linear infinite;
+    animation: marquee 245s linear infinite;
 }
 @keyframes marquee {
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-100%, 0); }
+}
+
+.hide{
+  display: none !important;
 }
 </style>
 
 
 <script type="text/javascript">
 
-  function changeImageHere(){
-    var element = document.getElementById('changeImage');
-
-    if (element.src == "https://images.unsplash.com/photo-1646291417814-5241b938669a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"){
-
-        element.src = "https://images.unsplash.com/photo-1646282014691-620f9af448a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
+  function changeChartHere(){
+    // alert("1.5 seconds");
+    var element = document.getElementById("meowChart");
+      var elem = document.getElementById("ourChart")
+      var ele = document.getElementById("myChart");
+    if (count == 1){
+      element.classList.add('hide');
+      ele.classList.remove('hide');
+      count ++;
+      // alert(count)
     }
-    else{
-      element.src = "https://images.unsplash.com/photo-1646291417814-5241b938669a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
+    else if(count==2){
+      // element.classList.add('hide');
+      ele.classList.add('hide');
+      elem.classList.remove('hide')
+      count ++;
+      // alert(count)
     }
-    
+    else {
+       elem.classList.add('hide');
+       element.classList.remove('hide');
+       count = 1;
+       // alert(count)
+    }
   }
 
 // Image Change in 15 seconds
+
   setInterval(changeImageHere, 5000);
  
+
+  var count = 1
+  setInterval(changeChartHere, 1500);
+
+
 
 </script>
 
@@ -232,3 +266,103 @@
 }
 
 </style>
+
+
+<script type="text/javascript">
+  
+  // chart dummy datas
+
+    var xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+  new Chart("meowChart", {
+    type: "line",
+    data: {
+      labels: xValues,
+      datasets: [{ 
+        data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+        borderColor: "red",
+        fill: false
+      }, { 
+        data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+        borderColor: "green",
+        fill: false
+      }, { 
+        data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
+        borderColor: "blue",
+        fill: false
+      }]
+    },
+    options: {
+      legend: {display: false}
+    }
+  })
+
+
+
+  var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+  var yValues = [55, 49, 44, 24, 15];
+  var barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145"
+  ];
+
+  new Chart("ourChart", {
+    type: "doughnut",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "World Wide Wine Production 2018"
+      }
+    }
+  });
+
+
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+  const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 16, 3],
+        backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+
+</script>
