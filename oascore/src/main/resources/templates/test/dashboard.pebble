@@ -21,6 +21,7 @@
 <script src="http://localhost:8010/js/bootstrap.min.js"></script> 
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
@@ -51,7 +52,7 @@
         <div class="card overflow-hidden" style="height:8p0x; width: 250px;">
           <div class="card-body p-0 d-flex align-items-center">
             <div class="bg-primary text-white p-4 me-3" style="width: 65px">
-          <img src="https://openweathermap.org/img/w/{{icon}}.png" width="30" height="30">
+          <img src="https://openweathermap.org/img/w/{{icon}}.png" width="30" height="30"> 
 	
             </div>
             <div style="margin-left: 10px;">
@@ -282,7 +283,7 @@ setInterval(function() {
     .fadeIn(1000)
     .end()
     .appendTo('#slideshow');
-}, 15000);
+}, 5000);
 
 </script>
 
@@ -373,7 +374,8 @@ setInterval(function() {
 			
 			Highcharts.chart(a[i].indicator, {
     chart: {
-        type: 'line'
+        type: 'line',
+        height: '500px'
        
     },
     title: {
@@ -404,11 +406,74 @@ setInterval(function() {
         data: a[i].data.map(Number)
     }]
 });
-			}else{
+			}
+			
+			if(a[i].chart_type=="Pie Chart"){
+			var ind=a[i].indicator;
+			var nam=a[i].inamenp;
+			var series = [{
+                    name: "Total",
+                    data: []
+                }];
+			var piedata=a[i].data.map(Number);
+			for(var p in piedata){
+				var pies = {name:months[p],y:piedata[p]};
+				
+				series[0].data.push(pies);
+			}
+			
+			Highcharts.chart(ind, {
+    chart: {
+       type: 'pie',
+        options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+        }
+    },
+    title: {
+        text: nam
+    },
+    subtitle: {
+        text: a[i].inameen+"("+a[i].fys+")"
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+             depth: 35,
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    series: series
+});
+			
+			}
+			
+			
+			if(a[i].chart_type=="Bar Chart"){
 			
 			Highcharts.chart(a[i].indicator, {
     chart: {
-        type: 'column'
+        type: 'column',
+        height: '500px',
+        options3d: {
+            enabled: true,
+            alpha: 0,
+            beta: 20,
+            depth: 70
+        }
         
     },
     title: {
@@ -419,7 +484,13 @@ setInterval(function() {
     },
     xAxis: {
         categories: months,
-        crosshair: true
+        crosshair: true,
+        labels: {
+            skew3d: true,
+            style: {
+                fontSize: '16px'
+            }
+        }
     },
     yAxis: {
         min: 0,
@@ -443,6 +514,7 @@ setInterval(function() {
                                       enableMouseTracking: true
                                     },
                                     column: {
+                                     depth: 50,
                                       dataLabels: {
                                         enabled: true
                                       },

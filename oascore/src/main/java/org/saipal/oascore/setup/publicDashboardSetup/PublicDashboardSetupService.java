@@ -115,7 +115,7 @@ public class PublicDashboardSetupService extends AutoService{
 
 		String sql = "UPDATE public_dashboard_setup set indicator=?,fy=?,p_id=?,orgid=?,created_by=?, chart_type=? where id=?";
 		rowEffect = db.execute(sql,
-				Arrays.asList(model.indicator, model.fy,model.p_id,session("orgid"),session("empid"),id, model.chart_type));
+				Arrays.asList(model.indicator, model.fy,model.p_id,session("orgid"),session("empid"),model.chart_type,id));
 
 		if (rowEffect.getErrorNumber() == 0) {
 			return Messenger.getMessenger().success();
