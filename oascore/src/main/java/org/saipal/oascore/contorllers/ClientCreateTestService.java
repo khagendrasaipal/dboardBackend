@@ -236,4 +236,27 @@ public class ClientCreateTestService extends AutoService{
 		// TODO Auto-generated method stub
 		return list;
 	}
+
+	public ResponseEntity<Map<String, Object>> getDashboard() throws Exception {
+		String sql = "select indicator,fy,concat(fy,\\\"/\\\",fy+1) as fys,chart_type,data_elements.data_elements as inameen,data_elements.data_elements_np as inamenp from public_dashboard_setup join data_elements on data_elements.uid=public_dashboard_setup.indicator where orgid="+request("orgid");
+		List<String> argList = new ArrayList<String>();
+		List<Tuple> tList = db.getResultList(sql, argList);
+		
+		List<Map<String, Object>> list = new ArrayList<>();
+		for (Tuple t : tList) {
+			String ouid="YqQbkwADI71";
+			String pe=preparePeriods(t.get("fy").toString());
+			String pef = pe.replaceFirst(".$","");
+			 String link = "/api/analytics.json?dimension=dx:"+t.get("indicator").toString()+"&dimension=pe:"+pef+"&filter=ou:"+ouid;
+			Map<String, Object> mapadmlvl = new HashMap<>();
+			mapadmlvl.put("indicator", t.get("indicator"));
+			mapadmlvl.put("chart_type", t.get("chart_type"));
+			mapadmlvl.put("fys", t.get("fys"));
+			mapadmlvl.put("inameen", t.get("inameen"));
+			mapadmlvl.put("inamenp", t.get("inamenp"));
+			mapadmlvl.put("data", getResponse(link));
+			list.add(mapadmlvl);
+		}
+		return Messenger.getMessenger().setData(list).success();
+	}
 }

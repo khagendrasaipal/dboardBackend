@@ -3,18 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Charts And Stuffs</title>
+  <title>Dashboard</title>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+<script src="http://localhost:8010/js/jquery-2.2.3.min.js"></script> 
+  <script src="http://localhost:8010/js/jquery.min.js"></script>
+  <script src="http://localhost:8010/js/jquery-ui.min.js"></script>
+<script src="http://localhost:8010/js/bootstrap.min.js"></script> 
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
   <script
   src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
@@ -30,7 +39,7 @@
   <div class="col-md-12 text-center">
     <br>
     <img src="../Emblem_of_Nepal_2020.svg" style="width: 60px;"> 
-    <h2>Some Municipality</h2>
+    <h2>{{orgname}}</h2>
   </div>      
   <!-- Header Section End -->
   <br>
@@ -65,8 +74,8 @@
             </svg>
           </div>
           <div style="margin-left: 10px;">
-            <div class="fs-6 fw-semibold text-primary">$1.999,50</div>
-            <div class="text-medium-emphasis text-uppercase fw-semibold small">Widget title</div>
+            <div class="fs-6 fw-semibold text-primary">24252</div>
+            <div class="text-medium-emphasis text-uppercase fw-semibold small">Population</div>
           </div>
         </div>
       </div>
@@ -145,7 +154,7 @@
    </div>
    <div class="col-md-11">
     <div class="marquee" style="line-height: -15px;">
-      <p style="font-size: xx-large;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis venenatis, massa a pellentesque aliquam, arcu nunc condimentum ligula, eleifend tempus ante arcu vitae libero. Aenean euismod, magna non egestas ullamcorper, ex urna volutpat ipsum, a tempor augue arcu at ipsum. Praesent aliquam libero tortor, nec pulvinar elit bibendum sed. Mauris luctus tincidunt vehicula. Fusce dictum ac ipsum vel tempus. Aenean malesuada sapien et tortor sagittis, porttitor blandit odio eleifend. Curabitur ut hendrerit lectus. Cras rhoncus rhoncus mi, a lobortis quam sollicitudin ac. Nam sit amet elit et orci semper rhoncus sed a eros. Nulla cursus a neque et malesuada. Proin tincidunt pellentesque est, at convallis felis viverra vitae. Maecenas sollicitudin aliquet massa at vehicula. Nam sed ante massa. Nullam ultricies cursus mauris id blandit. In imperdiet pretium enim. Cras accumsan quis nunc in facilisis. </p>
+      <p style="font-size: xx-large;">स्वास्थ्य ड्यासबोर्ड मुख्य रूपले ग्राफिकल चार्टहरू, नक्साहरू र तथ्याङ्कहरूको सहायताले स्वास्थ्य संकेतकहरूको प्रगतिको निरीक्षण गर्न प्रयोग हुन्छ । सान्दर्भिक चार्टहरू, नक्साहरू र तथ्याङ्कहरू पनि ड्यासबोर्डबाट डाउनलोड गर्न सकिन्छ । </p>
     </div>
   </div>
 </div>
@@ -159,7 +168,7 @@
 <div class="row">
 
   <div class="col-md-12 text-center">
-  <!--  {% for p in chart %}{{ p.get("inamenp")}}{% endfor %} -->
+   
     <img id="changeImage" 
 
   <div class="col-md-12">
@@ -168,6 +177,17 @@
     src="https://images.unsplash.com/photo-1646282014691-620f9af448a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
     style="max-height:625px;
     max-width: 100%;" class="d-block w-100" alt="..."> -->
+    <figure class="highcharts-figure">
+     <div id="slideshow" class="row text-center">
+      {% for p in chart %}
+     
+      <div class="col-md-12 col-xs-12" id="{{ p.get("indicator")}}"> </div>
+      
+      
+      {% endfor %}
+    
+     
+     </figure>
 
     <canvas id="meowChart" class="d-block w-100" style="padding:20px; max-height:630px"></canvas>
   
@@ -204,7 +224,7 @@
 .marquee p {
     display: inline-block;
     padding-left: 100%;
-    animation: marquee 245s linear infinite;
+    animation: marquee 60s linear infinite;
 }
 @keyframes marquee {
     0%   { transform: translate(0, 0); }
@@ -216,7 +236,7 @@
 }
 </style>
 
-
+ 
 <script type="text/javascript">
 
   function changeChartHere(){
@@ -247,13 +267,22 @@
 
 // Image Change in 15 seconds
 
-  setInterval(changeImageHere, 5000);
+  
  
 
   var count = 1
-  setInterval(changeChartHere, 1500);
+ //  setInterval(changeChartHere, 5000);
 
+$("#slideshow > div:gt(0)").hide();
 
+setInterval(function() {
+  $('#slideshow > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#slideshow');
+}, 15000);
 
 </script>
 
@@ -274,29 +303,7 @@
 
     var xValues = [100,200,300,400,500,600,700,800,900,1000];
 
-  new Chart("meowChart", {
-    type: "line",
-    data: {
-      labels: xValues,
-      datasets: [{ 
-        data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
-        borderColor: "red",
-        fill: false
-      }, { 
-        data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
-        borderColor: "green",
-        fill: false
-      }, { 
-        data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
-        borderColor: "blue",
-        fill: false
-      }]
-    },
-    options: {
-      legend: {display: false}
-    }
-  })
-
+  
 
 
   var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
@@ -309,22 +316,7 @@
   "#1e7145"
   ];
 
-  new Chart("ourChart", {
-    type: "doughnut",
-    data: {
-      labels: xValues,
-      datasets: [{
-        backgroundColor: barColors,
-        data: yValues
-      }]
-    },
-    options: {
-      title: {
-        display: true,
-        text: "World Wide Wine Production 2018"
-      }
-    }
-  });
+  
 
 
 
@@ -363,6 +355,130 @@
       }
     }
   });
+  var baseUrl="http://localhost:8010";
+  var months=["Shrawn","Bhadra","Ashoj","Kartik","Mangsir","Poush","Magh","Falgun","Chaitra","Baishakh","Jestha","Ashar"];
+   $.ajax({
+
+        method: 'get',
+        url: baseUrl+"/getDashboard?orgid="+{{orgid}},
+        success: function(response) {
+         var a=response.data;
+         var htm="";
+		for(var i in a){
+		 htm+="<div id='"+a[i].indicator+"'></div>";
+		
+		// $("#slideshow").html(htm);
+			console.log(a[i].fys);
+			if(a[i].chart_type=="Line Chart"){
+			
+			Highcharts.chart(a[i].indicator, {
+    chart: {
+        type: 'line'
+       
+    },
+    title: {
+        text: a[i].inamenp
+    },
+    subtitle: {
+        text: a[i].inameen
+    },
+    xAxis: {
+        categories: months,
+        crosshair: true
+    },
+    yAxis: {
+        title: {
+            text: 'Value'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name:a[i].inamenp +" "+ a[i].fys,
+        data: a[i].data.map(Number)
+    }]
+});
+			}else{
+			
+			Highcharts.chart(a[i].indicator, {
+    chart: {
+        type: 'column'
+        
+    },
+    title: {
+        text: a[i].inamenp
+    },
+    subtitle: {
+        text: a[i].inameen
+    },
+    xAxis: {
+        categories: months,
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Value'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+   plotOptions: {
+                                    line: {
+                                      dataLabels: {
+                                        enabled: true
+                                      },
+                                      enableMouseTracking: true
+                                    },
+                                    column: {
+                                      dataLabels: {
+                                        enabled: true
+                                      },
+                                      enableMouseTracking: true
+                                    },
+                                    bar: {
+                                      dataLabels: {
+                                        enabled: true
+                                      },
+                                      enableMouseTracking: true
+                                    },
+                                    areaspline: {
+                                      dataLabels: {
+                                        enabled: true
+                                      },
+                                      enableMouseTracking: true
+                                    }
+
+                                  },
+    series: [{
+        name: a[i].inamenp +" "+ a[i].fys,
+        data: a[i].data.map(Number)
+
+    }]
+});
+
+
+
+			
+  }
+		}
+        },
+        fail: function() {
+            alert("failed");
+        }
+    });
 
 
 </script>

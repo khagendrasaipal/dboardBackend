@@ -158,16 +158,22 @@ public class MainController {
 		model.addAttribute("type",weather.get(0).get("type"));
 		model.addAttribute("desc",weather.get(0).get("desc"));
 		model.addAttribute("icon",weather.get(0).get("icon"));
+		model.addAttribute("orgid",org.get(0).get("id").toString());
 		return "test/dashboard";
 	}
 	
 	@GetMapping("/test/web")
-	public String webs(Model model,HttpServletRequest request) {
+	public String webs(Model model,HttpServletRequest request) throws JSONException {
 		List<Tuple> org = createClient.getOrgs(request);
 		List<Tuple> chart=createClient.getChartConfig(request);
+		List<Map<String, Object>> weather=createClient.getWeatherInfo(request);
 		String orgname=org.get(0).get("name").toString();
 		model.addAttribute("orgname", orgname);
 		model.addAttribute("chart",chart);
+		model.addAttribute("temp",weather.get(0).get("temp"));
+		model.addAttribute("type",weather.get(0).get("type"));
+		model.addAttribute("desc",weather.get(0).get("desc"));
+		model.addAttribute("icon",weather.get(0).get("icon"));
 		return "test/web";
 	}
 
@@ -193,6 +199,12 @@ public class MainController {
 	@GetMapping("/dboard/getComposite")
 	public ResponseEntity<Map<String, Object>> getComposite(HttpServletRequest request) {
 		return createClient.getComposite();
+
+	}
+	
+	@GetMapping("/getDashboard")
+	public ResponseEntity<Map<String, Object>> getdashboard(HttpServletRequest request) throws Exception {
+		return createClient.getDashboard();
 
 	}
 	
