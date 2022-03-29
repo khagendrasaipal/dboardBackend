@@ -49,8 +49,8 @@
     <div class="row" style=" justify-content: center;">
       <div class="col-md-2">
        <div class="col-6 col-lg-2">
-        <div class="card overflow-hidden" style="height:8p0x; width: 250px;">
-          <div class="card-body p-0 d-flex align-items-center">
+        <div class="card overflow-hidden" style="height:80px; width: 250px;max-height:80px;">
+          <div class="card-body p-0 d-flex align-items-center" style="height:80px;max-height:80px; display:block;">
             <div class="bg-primary text-white p-4 me-3" style="width: 65px">
           <img src="https://openweathermap.org/img/w/{{icon}}.png" width="30" height="30"> 
 	
@@ -66,8 +66,8 @@
 
     <div class="col-md-2">
      <div class="col-6 col-lg-3">
-      <div class="card overflow-hidden" style="height:8p0x; width: 250px;">
-        <div class="card-body p-0 d-flex align-items-center">
+      <div class="card overflow-hidden" style="height:80px;max-height:80px; width: 250px;">
+        <div class="card-body p-0 d-flex align-items-center" style="height:80px;max-height:80px; display:block;">
           <div class="bg-primary text-white p-4 me-3" style="width: 65px">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
               <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
@@ -86,8 +86,8 @@
 
   <div class="col-md-2">
    <div class="col-6 col-lg-3">
-    <div class="card overflow-hidden" style="height:8p0x; width: 250px;">
-      <div class="card-body p-0 d-flex align-items-center">
+    <div class="card overflow-hidden" style="height:80px;max-height:80px; width: 250px;">
+      <div class="card-body p-0 d-flex align-items-center" style="height:80px;max-height:80px; display:block;">
         <div class="bg-primary text-white p-4 me-3" style="width: 65px">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
             <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
@@ -105,8 +105,8 @@
 
 <div class="col-md-2">
   <div class="col-6 col-lg-3">
-    <div class="card overflow-hidden" style="height:8p0x; width: 250px;">
-      <div class="card-body p-0 d-flex align-items-center">
+    <div class="card overflow-hidden" style="height:80px;max-height:80px;width: 250px;">
+      <div class="card-body p-0 d-flex align-items-center" style="height:80px;max-height:80px; display:block;">
         <div class="bg-primary text-white p-4 me-3" style="width: 65px">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
             <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
@@ -124,8 +124,8 @@
 
 <div class="col-md-2">
  <div class="col-6 col-lg-3">
-  <div class="card overflow-hidden" style="height:8p0x; width: 250px;">
-    <div class="card-body p-0 d-flex align-items-center">
+  <div class="card overflow-hidden" style="height:80px;max-height:80px; width: 250px;">
+    <div class="card-body p-0 d-flex align-items-center" style="height:80px;max-height:80px; display:block;">
       <div class="bg-primary text-white p-4 me-3" style="width: 65px">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
           <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
@@ -169,28 +169,19 @@
 <div class="row">
 
   <div class="col-md-12 text-center">
-   
-    <img id="changeImage" 
-
-  <div class="col-md-12">
-   <!--  <img id="changeImage" 
-
-    src="https://images.unsplash.com/photo-1646282014691-620f9af448a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
-    style="max-height:625px;
-    max-width: 100%;" class="d-block w-100" alt="..."> -->
     <figure class="highcharts-figure">
-     <div id="slideshow" class="row text-center">
+     <div id="slideshow" class="row">
       {% for p in chart %}
      
-      <div class="col-md-12 col-xs-12" id="{{ p.get("indicator")}}"> </div>
+      <div class="col-md-12 col-xs-12" id="{{ p.get("indicator")}}" style="height:650px;"> </div>
       
       
       {% endfor %}
-    
+      </div>    
      
      </figure>
 
-    <canvas id="meowChart" class="d-block w-100" style="padding:20px; max-height:630px"></canvas>
+    <canvas id="meowChart" class="d-block w-100 hide" style="padding:20px; max-height:630px"></canvas>
   
       <canvas id="ourChart" class="d-block w-100 hide" style="padding:20px; max-height:630px; width: 700px;"></canvas>
 
